@@ -25,12 +25,16 @@ public class TruckDTO implements Serializable {
 
 
     private Long userId;
-    
+
 
     private String userLogin;
 
     private Long positionId;
-    
+
+    private Float lat;
+
+    private Float lng;
+
     public Long getId() {
         return id;
     }
@@ -83,6 +87,22 @@ public class TruckDTO implements Serializable {
 
     public void setPositionId(Long positionId) {
         this.positionId = positionId;
+    }
+
+    public Float getLat() {
+        return lat;
+    }
+
+    public void setLat(Float lat) {
+        this.lat = lat;
+    }
+
+    public Float getLng() {
+        return lng;
+    }
+
+    public void setLng(Float lng) {
+        this.lng = lng;
     }
 
     @Override

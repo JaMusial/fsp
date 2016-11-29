@@ -22,7 +22,9 @@
         </dd>
         <dt><span>Position</span></dt>
         <dd>
-            <a ui-sref="position-detail({id:vm.truck.positionId})">{{vm.truck.positionId}}</a>
+            <ng-map center="{{vm.truck.lat}}, {{vm.truck.lng}}" zoom="12" draggable="false">
+                <marker position="{{vm.truck.lat}}, {{vm.truck.lng}}"></marker>
+            </ng-map>
         </dd>
     </dl>
 

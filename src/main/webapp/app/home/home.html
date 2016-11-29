@@ -4,7 +4,7 @@
             <span class="hipster img-responsive img-rounded"></span>
         </div>
         <div class="col-md-8">
-            <h1>Welcome, Java Hipster!</h1>
+            <h1>Welcome!</h1>
             <p class="lead">This is your homepage</p>
 
             <div ng-switch="vm.isAuthenticated()">
@@ -12,9 +12,9 @@
                     You are logged in as user "{{vm.account.login}}".
                 </div>
 
-                <div class="alert alert-warning" ng-switch-when="false">
-                    If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-                </div>
+                <!--<div class="alert alert-warning" ng-switch-when="false">-->
+                    <!--If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").-->
+                <!--</div>-->
 
                 <div class="alert alert-warning" ng-switch-when="false">
                     You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
@@ -22,20 +22,48 @@
             </div>
 
             <p>
-                If you have any question on JHipster:
+                Find us on:
             </p>
 
             <ul>
-                <li><a href="http://jhipster.github.io/" target="_blank">JHipster homepage</a></li>
-                <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank">JHipster on Stack Overflow</a></li>
-                <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank">JHipster bug tracker</a></li>
-                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank">JHipster public chat room</a></li>
-                <li><a href="https://twitter.com/java_hipster" target="_blank" >follow @java_hipster on Twitter</a></li>
+                <!--<li>//KONTENT</li>-->
+                <li><a href="http://facebook.com/" target="_blank">Like us on facebook</a></li>
+                <li><a href="http://twitter.com/ target="_blank">Follow a twitter</a></li>
+                <li><a href="https://instagram.com" target="_blank">Check instagram</a></li>
+                <!--<li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank">JHipster public chat room</a></li>-->
+                <!--<li><a href="https://twitter.com/java_hipster" target="_blank" >follow @java_hipster on Twitter</a></li>-->
             </ul>
-
-            <p>
-             <span>If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank">Github</a>!
-            </p>
+            <ng-map center='current-position' geo-fallback-center="[40.74, -74.18]" zoom="12" on-click="vm.addMarker()" geo-callback="vm.getCurrentLoc('you')">
+                <marker ng-repeat="pos in vm.foodtrucks" position="{{pos.lat}}, {{pos.lng}}"></marker>
+                <info-window id="bar" max-width="200">
+                    <div ng-non-bindable>
+                        <div id="siteNotice"></div>
+                        <h1 id="firstHeading" class="firstHeading">Uluru</h1>
+                        <div id="bodyContent">
+                            <p>
+                                <b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large
+                                sandstone rock formation in the southern part of the
+                                Northern Territory, central Australia. It lies 335 km (208 mi)
+                                south west of the nearest large town, Alice Springs; 450 km
+                                (280 mi) by road. Kata Tjuta and Uluru are the two major
+                                features of the Uluru - Kata Tjuta National Park. Uluru is
+                                sacred to the Pitjantjatjara and Yankunytjatjara, the
+                                Aboriginal people of the area. It has many springs, waterholes,
+                                rock caves and ancient paintings. Uluru is listed as a World
+                                Heritage Site.
+                            </p>
+                            <p>Attribution: Uluru,
+                                <a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">
+                                    http://en.wikipedia.org/w/index.php?title=Uluru
+                                </a>
+                                (last visited June 22, 2009).</p>
+                        </div>
+                    </div>
+                </info-window>
+            </ng-map>
+            <!--<p>-->
+             <!--<span>If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank">Github</a>!-->
+            <!--</p>-->
         </div>
     </div>
 </div>

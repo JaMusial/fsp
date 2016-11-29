@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 public class TruckResource {
 
     private final Logger log = LoggerFactory.getLogger(TruckResource.class);
-        
+
     @Inject
     private TruckService truckService;
 
@@ -86,12 +86,21 @@ public class TruckResource {
      */
     @GetMapping("/trucks")
     @Timed
-    public ResponseEntity<List<TruckDTO>> getAllTrucks(Pageable pageable)
+    public ResponseEntity<List<TruckDTO>> getAllUserTrucks(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Trucks");
-        Page<TruckDTO> page = truckService.findAll(pageable);
+        Page<TruckDTO> page = truckService.findUsersTrucks(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/trucks");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/trucks/all")
+    @Timed
+    public ResponseEntity<List<TruckDTO>> getAllTrucks()
+        throws URISyntaxException {
+        log.debug("REST request to get a page of Trucks");
+        List<TruckDTO> page = truckService.findAll();
+        return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
     /**

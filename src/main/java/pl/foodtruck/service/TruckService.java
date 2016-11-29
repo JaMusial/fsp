@@ -22,11 +22,13 @@ public interface TruckService {
 
     /**
      *  Get all the trucks.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
     Page<TruckDTO> findAll(Pageable pageable);
+
+    List<TruckDTO> findAll();
 
     /**
      *  Get the "id" truck.
@@ -42,4 +44,6 @@ public interface TruckService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    Page<TruckDTO> findUsersTrucks(Pageable pageable);
 }

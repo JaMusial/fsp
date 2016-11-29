@@ -49,13 +49,6 @@
                 </p>
             </div>
         </div>
-
-        <div class="form-group">
-            <label for="field_user">User</label>
-            <select class="form-control" id="field_user" name="user" ng-model="vm.truck.userId" ng-options="user.id as user.login for user in vm.users"             required>
-                <option value=""></option>
-            </select>
-        </div>
         <div ng-show="editForm.user.$invalid">
             <p class="help-block"
                 ng-show="editForm.user.$error.required">
@@ -63,10 +56,25 @@
             </p>
         </div>
         <div class="form-group">
+            <label for="field_address">Address</label>
+            <input ng-model="vm.address" class="form-control" name="address"/>
+        </div>
+        <div class="form-group">
             <label for="field_position">Position</label>
+            <ng-map center='{{vm.address}}' geo-fallback-center="[40.74, -74.18]" zoom="16" on-click="vm.addMarker()" geo-callback="vm.getCurrentLoc('you')">
+                <marker position="{{vm.truck.lat}}, {{vm.truck.lng}}"></marker>
+            </ng-map>
+            <input type="text" class="form-control" name="lat" id="field_lat"
+                   ng-model="vm.truck.lat"
+                   required style="display: none;"/>
+            <input type="text" class="form-control" name="name" id="field_lng"
+                   ng-model="vm.truck.lng"
+                   required style="display: none;"/>
+            <!--
             <select class="form-control" id="field_position" name="position" ng-model="vm.truck.positionId" ng-options="position.id as position.id for position in vm.positions | orderBy:'id'">
                 <option value=""></option>
             </select>
+            -->
         </div>
     </div>
     <div class="modal-footer">

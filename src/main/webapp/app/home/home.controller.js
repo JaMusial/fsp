@@ -5,9 +5,9 @@
         .module('foodtruckApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'NgMap', 'Home'];
 
-    function HomeController ($scope, Principal, LoginService, $state) {
+    function HomeController ($scope, Principal, LoginService, $state, NgMap, Home) {
         var vm = this;
 
         vm.account = null;
@@ -28,6 +28,24 @@
         }
         function register () {
             $state.go('register');
+        }
+
+        loadAll();
+
+        vm.foodtrucks = [];
+        NgMap.getMap().then(function(map) {
+              vm.map = map;
+        });
+
+        vm.getCurrentLoc = function(param) {
+            vm.map.getCenter();
+        }
+
+        function loadAll () {
+            Home.query(function(result) {
+                vm.foodtrucks = result;
+                console.log(result);
+            });
         }
     }
 })();

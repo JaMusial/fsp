@@ -5,9 +5,9 @@
         .module('foodtruckApp')
         .controller('TruckDialogController', TruckDialogController);
 
-    TruckDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Truck', 'User', 'Position'];
+    TruckDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Truck', 'User', 'Position', 'NgMap'];
 
-    function TruckDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Truck, User, Position) {
+    function TruckDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Truck, User, Position, NgMap) {
         var vm = this;
 
         vm.truck = entity;
@@ -27,6 +27,23 @@
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
+
+        // maps
+        vm.address = 'current-position';
+        NgMap.getMap().then(function(map) {
+              vm.map = map;
+        });
+
+        vm.getCurrentLoc = function(param) {
+            vm.map.getCenter();
+        }
+
+        vm.addMarker = function(event) {
+            var ll = event.latLng;
+            entity.lat = ll.lat();
+            entity.lng = ll.lng();
+        }
+
 
         function clear () {
             $uibModalInstance.dismiss('cancel');

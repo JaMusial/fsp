@@ -32,8 +32,9 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
-                        <li ui-sref-active="active">
-                            <a ui-sref="position" ng-click="vm.collapseNavbar()">
+                        <!--<li ui-sref-active="active">-->
+                        <li has-authority="ROLE_ADMIN" ui-sref-active="active">
+                            <a ui-sref="position" ng-click="vm.collapseNavbar()">                       <!-- -->
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                 <span >Position</span>
                             </a>
