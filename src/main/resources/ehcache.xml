@@ -41,5 +41,13 @@
            timeToLiveSeconds="3600">
     </cache>
 
+    <cache name="pl.foodtruck.domain.Position"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="pl.foodtruck.domain.Truck"
+        timeToLiveSeconds="3600">
+    </cache>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </ehcache>
